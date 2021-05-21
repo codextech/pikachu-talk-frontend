@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainImageComponent } from './main-image/main-image.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { ApiInterceptor } from 'src/core/interceptor/api.interceptor';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -34,11 +35,14 @@ import { ApiInterceptor } from 'src/core/interceptor/api.interceptor';
     AppRoutingModule,
     FormsModule, /* template driven */
     ReactiveFormsModule, /* reactive form */
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS , useClass : ApiInterceptor , multi: true }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
