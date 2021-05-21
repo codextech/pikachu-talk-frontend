@@ -7,11 +7,15 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { finalize } from 'rxjs/operators';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
 
-  constructor() {}
+
+  constructor(private spinner: NgxSpinnerService) {}
+
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -22,8 +26,12 @@ export class ApiInterceptor implements HttpInterceptor {
       }),
    });
 
+   this.spinner.show();
 
-
-    return next.handle(request);
+    return next.handle(request).pipe(
+      finalize(() =>{
+        this.spinner.hide() /* hide loader */
+      })
+    );
   }
 }
