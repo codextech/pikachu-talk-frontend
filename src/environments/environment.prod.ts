@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API_URL : "http://localhost:3000/api",
-  IMAGE_BASEURL : "http://localhost:3000/"
+  API_URL : "https://pikachu-talk.herokuapp.com/api",
+  IMAGE_BASEURL : "https://pikachu-talk.herokuapp.com/"
 };
