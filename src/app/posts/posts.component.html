@@ -1,0 +1,25 @@
+
+<app-main-image></app-main-image>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      <div *ngFor="let p of posts" class="col">
+        <div class="card shadow-sm">
+          <img class="card-img-top" src="{{imageBaseUrl}}{{p.imageUrl}}" alt="Card image cap">
+          <div class="card-body">
+           <h5 class="card-title">{{p.title | titlecase }}</h5>
+            <p class="card-text">{{p.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <button [routerLink]="['/details', p._id ]"  type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <small class="text-muted">{{p.createdAt  | date}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

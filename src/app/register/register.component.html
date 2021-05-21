@@ -1,0 +1,45 @@
+<main class="form-signin container mt-5">
+  <form  [formGroup]="form" (ngSubmit)="submit()">
+    <img class="mb-4" src="/assets/img/logo.png" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control"
+      formControlName="name"
+      name="name"
+       placeholder="hadi">
+      <label>Name</label>
+
+      <p *ngIf="f.name?.errors" class="text-danger">
+        invalid
+      </p>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="email"
+      class="form-control"
+      formControlName="email"
+      name="email"
+      placeholder="name@example.com">
+      <label>Email address</label>
+
+      <p *ngIf="f.email?.errors" class="text-danger">
+        invalid
+      </p>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password"
+      class="form-control"
+      formControlName="password"
+      name="password"
+      placeholder="Password">
+      <label>Password</label>
+
+      <p *ngIf="f.password?.errors" class="text-danger">
+        required
+      </p>
+    </div>
+
+    <button [disabled]="form.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+  </form>
+</main>
